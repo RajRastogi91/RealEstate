@@ -8,7 +8,7 @@ import paymentRouter from './Routes/payment.route.js';
 import path from 'path';
 
 
-const __dirname = path.resolve();
+
 
 
 const app = express();
@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(cors())
 
 
-const port = process.env.PORT;
+const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`Server Started on port ${port}...`));
 
 
