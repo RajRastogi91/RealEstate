@@ -49,7 +49,7 @@ const Navbar: React.FC = () => {
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:3000/listing/getListings/?title=${searchTerm}`);
+      const response = await fetch(`https://newrealestate.onrender.com/listing/getListings/?title=${searchTerm}`);
       if (!response.ok) {
         throw new Error('Failed to fetch data');
       }

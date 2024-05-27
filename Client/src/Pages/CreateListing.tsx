@@ -100,7 +100,7 @@ console.log(propertyDetails)
         };
 
         // Send property data to the server
-       const response = await fetch('http://localhost:3000/listing/createlist', {
+       const response = await fetch('https://newrealestate.onrender.com/listing/createlist', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',

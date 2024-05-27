@@ -12,7 +12,9 @@ import paymentRouter from './Routes/payment.route.js';
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors())
+app.use(cors({
+  origin: "https://squareproperty.netlify.app/"
+}))
 
 
 const port = process.env.PORT || 4000;

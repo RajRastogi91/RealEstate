@@ -52,7 +52,7 @@ const Profile: React.FC = () => {
   const handleSignOut = async () => {
     try {
       dispatch(signOutUserStart());
-      const res = await fetch("http://localhost:3000/auth/signout");
+      const res = await fetch("https://newrealestate.onrender.com/auth/signout");
       const data = await res.json();
       if (data.success === false) {
         dispatch(deleteUserFailure(data.message));
@@ -68,7 +68,7 @@ const Profile: React.FC = () => {
     try {
       setShowListingsError(false);
       const res = await fetch(
-        `http://localhost:3000/listing/getPropertyDetails/${decoded.id}`,
+        `https://newrealestate.onrender.com/listing/getPropertyDetails/${decoded.id}`,
         {
           method: "GET",
           headers: {
@@ -103,7 +103,7 @@ const Profile: React.FC = () => {
       // Perform update logic here, using username, email, password state variables
       // Example: Update API call
       const response = await fetch(
-        `http://localhost:3000/user/updateUser/${decoded.id}`,  
+        `https://newrealestate.onrender.com/user/updateUser/${decoded.id}`,  
         {
           method: "PUT",
           headers: {
@@ -129,7 +129,7 @@ const Profile: React.FC = () => {
   const handleDeleteUser = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/user/deleteUser/${decoded.id}`,
+        `https://newrealestate.onrender.com/user/deleteUser/${decoded.id}`,
         {
           method: "DELETE",
         }

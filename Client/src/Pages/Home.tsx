@@ -21,7 +21,7 @@ const Home: React.FC = () => {
     const fetchProperties = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/listing/getFilterListings"
+          "https://newrealestate.onrender.com/listing/getFilterListings"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");

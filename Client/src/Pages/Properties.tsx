@@ -40,7 +40,7 @@ const Properties: React.FC = () => {
         setLoading(true);
         // Make a request to fetch property details using propertyid
         const res = await fetch(
-          `http://localhost:3000/listing/getDetails/${id}`
+          `https://newrealestate.onrender.com/listing/getDetails/${id}`
         );
         const data = await res.json();
         if (res.status === 404 || data.success === false) {
@@ -67,7 +67,7 @@ const Properties: React.FC = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/payment/createsession",
+        "https://newrealestate.onrender.com/payment/createsession",
         {
           method: "POST",
           headers: {

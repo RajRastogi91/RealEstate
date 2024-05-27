@@ -27,7 +27,7 @@ const SignIn: React.FC = () => {
     e.preventDefault();
     try {
       dispatch(signInStart())
-      const response = await fetch('http://localhost:3000/auth/signin', {
+      const response = await fetch('https://newrealestate.onrender.com/auth/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

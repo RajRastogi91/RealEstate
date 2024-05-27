@@ -9,7 +9,7 @@ const Listings: React.FC = () => {
 
     const handleListingDelete = async (id:any) => {  
         try {
-          const res = await fetch(`http://localhost:3000/listing/deletelisting/${id}`, {
+          const res = await fetch(`https://newrealestate.onrender.com/listing/deletelisting/${id}`, {
             method: 'DELETE',
           });
           const data = await res.json();

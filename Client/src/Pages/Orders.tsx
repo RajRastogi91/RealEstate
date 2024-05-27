@@ -17,7 +17,7 @@ const Orders: React.FC = () => {
             try {
                 if (!decoded.id) return;
 
-                const response = await fetch(`http://localhost:3000/listing/OrderedProperties/${decoded.id}`);
+                const response = await fetch(`https://newrealestate.onrender.com/listing/OrderedProperties/${decoded.id}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }

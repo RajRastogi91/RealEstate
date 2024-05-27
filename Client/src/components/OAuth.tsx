@@ -20,7 +20,7 @@ const OAuth: React.FC = () => {
            const photoURL=result.user.photoURL
            const uid= result.user.uid
 
-            const res = await fetch('http://localhost:3000/auth/google', {
+            const res = await fetch('https://newrealestate.onrender.com/auth/google', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

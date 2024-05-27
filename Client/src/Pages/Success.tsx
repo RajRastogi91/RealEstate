@@ -23,7 +23,7 @@ const Success: React.FC = () => {
                   throw new Error('Missing parameters');
               }
 
-              const response = await fetch(`http://localhost:3000/payment/success?session_id=${session_id}&property_id=${property_id}&user_id=${user_id}&amount=${amount}`, {
+              const response = await fetch(`https://newrealestate.onrender.com/payment/success?session_id=${session_id}&property_id=${property_id}&user_id=${user_id}&amount=${amount}`, {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',

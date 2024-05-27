@@ -36,7 +36,7 @@ const UpdateListing: React.FC = () => {
    useEffect(() => {
         const fetchListing = async () => {
             const listingId = params.id;
-            const res = await fetch(`http://localhost:3000/listing/getDetails/${listingId}`);
+            const res = await fetch(`https://newrealestate.onrender.com/listing/getDetails/${listingId}`);
             const data = await res.json();
             if( data.success === false ) {
                 console.log(data.message);
@@ -114,7 +114,7 @@ const UpdateListing: React.FC = () => {
 
         
             // Send property data to update the server
-            await fetch(`http://localhost:3000/listing/updateProperty/${params.id}`, {
+            await fetch(`https://newrealestate.onrender.com/listing/updateProperty/${params.id}`, {
                 method: 'PUT',
                 headers: { 
                     'Content-Type': 'application/json',
