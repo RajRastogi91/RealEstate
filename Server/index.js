@@ -5,7 +5,6 @@ import authRouter from './Routes/auth.route.js';
 import listingRouter from './Routes/listing.route.js';
 import userRouter from './Routes/user.route.js';
 import paymentRouter from './Routes/payment.route.js';
-import path from 'path';
 
 
 
