@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import path from 'path';
 import bodyParser from "body-parser";
 import authRouter from './Routes/auth.route.js';
 import listingRouter from './Routes/listing.route.js';
@@ -26,13 +27,22 @@ app.use(cors({
 
 app.options('*', cors());
 
-const port = process.env.PORT || 4000;
-app.listen(port, () => console.log(`Server Started on port ${port}...`));
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/auth', authRouter);
 app.use('/listing', listingRouter);
 app.use('/user', userRouter);
 app.use('/payment', paymentRouter);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
+
+const port = process.env.PORT || 4000;
+app.listen(port, () => console.log(`Server Started on port ${port}...`));
+
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
