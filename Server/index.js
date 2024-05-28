@@ -27,6 +27,8 @@ app.use(cors({
 
 app.options('*', cors());
 
+// Serve static files from the Vite app's dist directory
+
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, 'dist')));
 
