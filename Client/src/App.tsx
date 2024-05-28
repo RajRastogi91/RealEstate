@@ -32,7 +32,6 @@ const App: React.FC = () => {
        <Route path="/CreateListing" element={<CreateListing />} />
        <Route path="/Listings" element={<Listings />} />
        <Route path="/UpdateListing/:id" element={<UpdateListing />} />
-       {/* <Route path="/Contact" element={<Contact />} /> */}
        <Route element={<PrivateRoute/>}>
           <Route path="/Profile" element={<Profile />} />
        </Route>
