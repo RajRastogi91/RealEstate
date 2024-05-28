@@ -1,5 +1,5 @@
-import React from "react"
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React from "react";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import './index.css';
 import Navbar from "./components/Navbar";
 import Home from "./Pages/Home";
@@ -21,30 +21,28 @@ const App: React.FC = () => {
 
   return (
     <>
- 
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-       <Route path="/" element={<Home />} />
-       <Route path="/About" element={<About />} />
-       <Route path="/Search" element={<Search />} />
-       <Route path="/property/:id" element={<Properties />} />
-       <Route path="/CreateListing" element={<CreateListing />} />
-       <Route path="/Listings" element={<Listings />} />
-       <Route path="/UpdateListing/:id" element={<UpdateListing />} />
-       <Route element={<PrivateRoute/>}>
-          <Route path="/Profile" element={<Profile />} />
-       </Route>
-       <Route path="/SignUp" element={<SignUp />} />
-       <Route path="/SignIn" element={<SignIn />} />
-       <Route path="/Success" element={<Success />} />
-       <Route path="/Cancel" element={<Cancel />} />
-       <Route path="/Orders" element={<Orders />} />
-      </Routes>
-    </BrowserRouter>
-   
+      <HashRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Search" element={<Search />} />
+          <Route path="/property/:id" element={<Properties />} />
+          <Route path="/CreateListing" element={<CreateListing />} />
+          <Route path="/Listings" element={<Listings />} />
+          <Route path="/UpdateListing/:id" element={<UpdateListing />} />
+          <Route element={<PrivateRoute/>}>
+            <Route path="/Profile" element={<Profile />} />
+          </Route>
+          <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/SignIn" element={<SignIn />} />
+          <Route path="/Success" element={<Success />} />
+          <Route path="/Cancel" element={<Cancel />} />
+          <Route path="/Orders" element={<Orders />} />
+        </Routes>
+      </HashRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
