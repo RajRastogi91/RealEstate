@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 const allowedOrigins = [
   'https://squareproperty.netlify.app',
-  'https://665562571f96ed8efcad92e6--squareproperty.netlify.app',// Add other allowed origins here
+  'https://665562571f96ed8efcad92e6--squareproperty.netlify.app',
   'http://localhost:5173'
 ];
 
