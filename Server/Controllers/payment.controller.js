@@ -65,10 +65,10 @@ export const success = async (req, res) => {
         (error, results) => {
           if (error) {
             console.error('Error inserting payment record:', error);
-            return res.redirect('http://localhost:5173/#/Cancel');
+            return res.redirect('https://squareproperty.netlify.app/#/Cancel');
           } else {
             console.log('Payment record inserted successfully', results);
-            return res.redirect('http://localhost:5173/#/Success');
+            return res.redirect('https://squareproperty.netlify.app/#/Success');
           }
         }   
       );
