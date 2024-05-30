@@ -89,7 +89,7 @@ const SignIn: React.FC = () => {
     </form>
     <div className='flex justify-center gap-2 mt-5'>
       <p>Dont have an account?</p>
-      <Link to={'/signup'}>
+      <Link to={'/signup'}>de
         <span className='text-blue-700'>Sign up</span>
       </Link>
     </div>

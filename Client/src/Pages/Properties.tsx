@@ -15,7 +15,6 @@ const Properties: React.FC = () => {
   const { id } = useParams();
   const currentUser = useSelector((state: any) => state.user.currentUser);
 
-  console.log(listing);
   let decoded: any;
   if (currentUser && currentUser.access_token) {
     decoded = jwtDecode(currentUser.access_token);

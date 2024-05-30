@@ -27,9 +27,9 @@ const CreateListing: React.FC = () => {
     });
 
     
-
+    const [loading, setLoading] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
-console.log(propertyDetails)
+
    
   
 
@@ -49,7 +49,7 @@ console.log(propertyDetails)
                 },
                 (error) => {
                     reject(error);
-                },
+                },   
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref)
                         .then((downloadURL) => {     
@@ -86,6 +86,7 @@ console.log(propertyDetails)
             alert('You should select at least one image');
             return;
         }
+        setLoading(true);
         try {
 
             const promises = selectedImages.map((image) => storeImage(image));
@@ -124,6 +125,8 @@ console.log(propertyDetails)
         // console.log('Property ID:', propertyid);
     } catch (error) {
         console.error('Error creating property:', error);
+    } finally {
+        setLoading(false);
     }
     };
 
@@ -298,8 +301,9 @@ console.log(propertyDetails)
 
               type='button'
               className='p-3 bg-blue-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
-              onClick={handleUpload} >
-                Create Listing
+              onClick={handleUpload}
+              disabled={loading} >
+                {loading ? 'Creating...' : 'Create Listing'}
             </button>
         </div>
     </form>

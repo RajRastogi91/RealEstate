@@ -42,7 +42,7 @@ const Profile: React.FC = () => {
   const [showListingsError, setShowListingsError] = useState(false);
   const [userListings, setUserListings] = useState([]);
   const navigate = useNavigate();
-
+ 
 
   let decoded: any;
   if (currentUser && currentUser.access_token) {     
@@ -228,7 +228,7 @@ const Profile: React.FC = () => {
           placeholder="username"
           id="username"      
           className="border p-3 rounded-lg"
-          value={username}   
+          defaultValue={decoded.name}   
           onChange={(e) => setUsername(e.target.value)}  
         />  
         <input
@@ -236,7 +236,7 @@ const Profile: React.FC = () => {
           placeholder="email"
           id="email"
           className="border p-3 rounded-lg"
-          value={email}
+          defaultValue={decoded.email}
           onChange={(e) => setEmail(e.target.value)}
         />  
         <input

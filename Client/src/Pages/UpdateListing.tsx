@@ -311,7 +311,7 @@ const UpdateListing: React.FC = () => {
         </div>
     </form>
    </main>
-  )
+  )  
 }
 
 export default UpdateListing;

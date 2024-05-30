@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Marker, Popup, useMap } from 'react-leaflet'
+import { Marker, Popup, useMap } from 'react-leaflet'     
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import icon from 'leaflet/dist/images/marker-icon.png'
@@ -17,11 +17,11 @@ L.Marker.prototype.options.icon = DefaultIcon
 
 const GeoCoderMarker: React.FC<GeoCoderMarkerProp> = ({location}) => {
     const map = useMap();    
-    const [position, setPosition] = useState<[number, number]>([53.35, 18.8])
+    const [position, setPosition] = useState<[number, number]>([53.35, 18.8]);
     // console.log(map)  
 
     useEffect(() => {
-        ELG.geocode().text(location).run((err:any, results:any)=> {
+        ELG.geocode().text(location).run((err:any, results:any)=> {        
             if (err) {
                 console.error("Error");
                 return;

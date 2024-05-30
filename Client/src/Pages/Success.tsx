@@ -17,9 +17,13 @@ const Success: React.FC = () => {
               const property_id = queryParams.get('property_id'); 
               const user_id = queryParams.get('user_id');
               const amount = queryParams.get('amount');
-        
 
-              if (!session_id || !property_id || !user_id) {      
+              console.log('session_id:', session_id);
+              console.log('property_id:', property_id);
+              console.log('user_id:', user_id);
+              console.log('amount:', amount);
+
+              if (!session_id || !property_id || !user_id || !amount) {      
                   throw new Error('Missing parameters');
               }
 
@@ -55,5 +59,4 @@ const Success: React.FC = () => {
       
   )
 }
-
 export default Success
