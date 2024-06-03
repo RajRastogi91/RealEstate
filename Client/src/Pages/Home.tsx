@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { jwtDecode } from "jwt-decode";
 import PropertyCard from "./PropertyCard";
 import img from "../Images/Herosec.jpg";
+import Typed from 'typed.js';
 
 const Home: React.FC = () => {
   const currentUser = useSelector((state: any) => state.user.currentUser);
-  const [searchResults, setSearchResults] = useState([]);
-  const [properties, setProperties] = useState([]);
-  const [view, setView] = useState("");
+  const [properties, setProperties] = useState<any[]>([]);
+  const el = useRef<HTMLSpanElement>(null);
 
   let decoded: any;
   if (currentUser && currentUser.access_token) {
@@ -27,7 +27,8 @@ const Home: React.FC = () => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setProperties(data);
+        console.log(data);
+        setProperties(data || []);
       } catch (error) {
         console.error(error);
       }
@@ -36,22 +37,35 @@ const Home: React.FC = () => {
     fetchProperties();
   }, []);
 
-  const handleFilterProperties = (type: string) => {
-    if (type === "rent") {
-      const rentProps = properties.filter((property) => property.rent === 1);
-      setSearchResults(rentProps);
-    } else if (type === "sell") {
-      const sellProps = properties.filter((property) => property.sell === 1);
-      setSearchResults(sellProps);
+
+  useEffect(() => {
+    const options: Typed.Options = {
+      strings: ["Explore,", "Discover,"],
+      typeSpeed: 100,
+      backSpeed: 100,
+      backDelay: 1000,
+      loop: true,
+    };
+
+    // Ensure that el.current is not null
+    if (el.current) {
+      const typed = new Typed(el.current, options);
+
+      // Cleanup function to destroy the Typed instance when the component unmounts
+      return () => {
+        typed.destroy();
+      };
     }
-    setView(type);
-  };
+  }, []);
+
+  const rentProperties = properties.filter(property => property.rent === 1);
+  const saleProperties = properties.filter(property => property.sale === 1);
 
   return (
     <div>
       <div className="flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto">
         <h1 className="text-black font-bold text-3xl max-w-4xl lg:text-6xl">
-          Find Your Dream Home with Us –<span className="text-blue-700"> Explore, Discover</span>, and Make It Yours
+          Find Your Dream Home with Us –  <span className="text-blue-700" ref={el}></span><br/> and Make It Yours
           Today!
         </h1>
         <div className="sm:text-sm">
@@ -60,14 +74,14 @@ const Home: React.FC = () => {
           between. Whether you're searching for a starter home, an investment
           property, or your forever abode, we have something for everyone.
           <br />
-          We have a wide range of properties for you to choose from.
-        </div>
+          We have a wide range of properties for you to choose from.     
+        </div>  
         <Link
           to={"/search"}
           className="text-blue-700 w-[150px] font-semibold border-2 rounded-lg p-2 border-blue-700 hover:bg-blue-700 hover:text-white hover:border-transparent"
         >
           Explore More...
-        </Link>
+        </Link>   
       </div>
       <img
         src={img}
@@ -75,30 +89,27 @@ const Home: React.FC = () => {
         className="w-full h-[420px] object-cover"
       ></img>
 
-      <div className="max-w-6xl mx-auto p-3 flex items-center flex-col gap-8 my-10">
-        <button
-          onClick={() => handleFilterProperties("rent")}
-          className="border rounded-lg text-blue-700 w-80 p-2 text-sm sm:text-sm font-bold hover:bg-blue-700 hover:text-white transition ease-in duration-800"
-        >
-          Rent Property
-        </button>
-        <button
-          onClick={() => handleFilterProperties("sell")}
-          className="border rounded-lg text-blue-700 w-80 p-2 text-sm sm:text-sm font-bold hover:bg-blue-700 hover:text-white transition ease-in duration-800"
-        >
-          Buy Property
-        </button>
 
-        {view && (
-          <h2 className="text-2xl font-bold text-black">
-            {view === "rent" ? "Properties for Rent" : "Properties for Sale"}
-          </h2>
-        )}
-
+  <div className="max-w-6xl mx-auto p-3 flex items-center flex-col gap-8 my-10">
+        <h2 className="text-2xl font-bold text-black">Properties for Rent</h2>
         <div className="flex flex-wrap gap-4">
-          {searchResults.map((result: any) => (
-            <PropertyCard key={result.id} result={result} />
-          ))}
+          {rentProperties.length > 0 ? (
+            rentProperties.map((property: any) => (
+              <PropertyCard key={property.id} result={property} />
+            ))
+          ) : (
+            <p>No properties available for rent at the moment.</p>
+          )}
+        </div>
+        <h2 className="text-2xl font-bold text-black mt-10">Properties for Sale</h2>
+        <div className="flex flex-wrap gap-4">
+          {saleProperties.length > 0 ? (
+            saleProperties.map((property: any) => (
+              <PropertyCard key={property.id} result={property} />
+            ))
+          ) : (
+            <p>No properties available for sale at the moment.</p>
+          )}
         </div>
       </div>
     </div>
@@ -106,3 +117,5 @@ const Home: React.FC = () => {
 };
 
 export default Home;
+
+

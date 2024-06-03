@@ -63,7 +63,7 @@ const Properties: React.FC = () => {
       alert("Login First!");
       return;
     }
-
+    setLoading(true);
     try {
       const response = await fetch(
         "https://newrealestate.onrender.com/payment/createsession",
@@ -97,6 +97,8 @@ const Properties: React.FC = () => {
       }
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -177,8 +179,9 @@ const Properties: React.FC = () => {
                 <button
                   className="bg-red-700 w-[100px] text-white p-3 rounded-lg hover:opacity-95"
                   onClick={checkout}
-                >  
-                  Buy
+                  disabled={loading} >
+                {loading ? 'Buying...' : 'Buy'} 
+              
                 </button>
               </div>
             </div>

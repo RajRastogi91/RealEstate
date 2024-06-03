@@ -13,7 +13,7 @@ const Orders: React.FC = () => {
     }     
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchData = async () => {   
             try {
                 if (!decoded.id) return;
 
@@ -28,7 +28,7 @@ const Orders: React.FC = () => {
                 console.error('Error fetching data:', error);   
             }
         };
- 
+     
         fetchData();
     }, [decoded.id]);
 

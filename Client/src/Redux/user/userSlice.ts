@@ -3,10 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   currentUser: null,
   error: null,
-  loading: false,
-  property: {
-    propertyid: null,
-  }
+  loading: false
 };
 
 const userSlice = createSlice({
@@ -60,10 +57,7 @@ const userSlice = createSlice({
     signOutUserFailure: (state, action) => {
       state.error = action.payload;
       state.loading = false;
-    },
-    updatePropertyId: (state, action) => {
-      state.property.propertyid = action.payload;
-    },
+    }
   },
 });
 
@@ -80,7 +74,6 @@ export const {
   signOutUserFailure,
   signOutUserSuccess,
   signOutUserStart,
-  updatePropertyId,
 } = userSlice.actions;
 
 export default userSlice.reducer;

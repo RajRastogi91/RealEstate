@@ -78,8 +78,6 @@ export const createlist = (req, res) => {
 
 // GET listings for rent and sell
 
-
-
 export const getFilterListings = async (req, res) => {
   try {
     const results = await new Promise((resolve, reject) => {
@@ -97,11 +95,12 @@ export const getFilterListings = async (req, res) => {
         }
       });
     });
-    res.status(200).json(results); 
+    res.status(200).json(results);
   } catch (error) {
-    res.status(500).json({ error: error || "An unknown error occurred" }); 
+    res.status(500).json({ error: error || "An unknown error occurred" });
   }
 };
+
 
 
 

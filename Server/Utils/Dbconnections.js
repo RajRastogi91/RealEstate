@@ -19,7 +19,7 @@ const db = mysql.createPool({
   port: DB_PORT,
 });
 
-db.getConnection((err, connection) => {
+db.getConnection((err, connection) => {          
   if (err) throw err;
   console.log("DB connected successful: " + connection.threadId);
 });
