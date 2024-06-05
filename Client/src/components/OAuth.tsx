@@ -14,7 +14,7 @@ const OAuth: React.FC = () => {
             const provider = new GoogleAuthProvider();
             const auth = getAuth(app);
             const result = await signInWithPopup(auth, provider);
-            // console.log(result);
+             console.log(result);
            const name =result.user.displayName
            const email=result.user.email
            const photoURL=result.user.photoURL

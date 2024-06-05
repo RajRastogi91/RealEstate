@@ -109,7 +109,7 @@ const Navbar: React.FC = () => {
           <nav className='flex justify-between items-center'>
             <div>
               <ul className='md:items-center md:gap-8 hidden sm:flex'>
-                <li className='hover:transition ease-in transform hover:underline'><Link to="/">Home</Link></li>
+                <li className='hover:transition ease-in transform hover:scale-105'><Link to="/">Home</Link></li>
                 <li className='hover:transition ease-in transform hover:scale-105'><Link to="/about">About</Link></li>
                 <div className="hidden sm:flex items-center">
 
@@ -121,7 +121,7 @@ const Navbar: React.FC = () => {
                         alt='profile'
                       />
                     ) : (
-                      <button className="bg-[#a6c1ee] text-white px-5 p-1 rounded-full hover:bg-[#87acec] hidden sm:flex">Sign in</button>
+                      <button className="bg-[#87acec] text-white px-5 p-1 rounded-full hover:bg-[#262627] hidden sm:flex">Sign in</button>
 
                     )}
                   </Link>
@@ -131,7 +131,7 @@ const Navbar: React.FC = () => {
             <div className='md:hidden'>
               <IconButton onClick={toggleSidebar}>
                 <MenuIcon />
-              </IconButton>
+              </IconButton>  
               <Menu
                 id="demo-positioned-menu"
                 aria-labelledby="demo-positioned-button"
@@ -148,8 +148,6 @@ const Navbar: React.FC = () => {
               >
                 <MenuItem component={Link} to="/about" onClick={toggleSidebar}>About</MenuItem>
                 <MenuItem component={Link} to="/profile" onClick={toggleSidebar}>Profile</MenuItem>
-                {/* <MenuItem component={Link} to="/properties" onClick={toggleSidebar}>Properties</MenuItem> */}
-                {/* <MenuItem component={Link} to="/contact" onClick={toggleSidebar}>Contact</MenuItem> */}
                 <MenuItem component={Link} to="/signin" onClick={toggleSidebar}>Sign In</MenuItem>
               </Menu>
             </div>

@@ -91,32 +91,55 @@ const Profile: React.FC = () => {
     }
   };
 
+
   const handleUpdate = async (e: any) => {
-    try {   
+    try {
       e.preventDefault();
+  
+      // Check if at least one field is being updated
+      if (!username && !email && !password && !file) {
+        alert("Please update at least one field.");
+        return;
+      }
+  
+      // Check if any of the fields are empty when there's existing data
+      if (decodedval.name && !username) {
+        alert("Username cannot be empty.");
+        return;
+      }
+      if (decodedval.email && !email) {
+        alert("Email cannot be empty.");
+        return;
+      }
+      if (!password) {
+        alert("Password cannot be empty.");
+        return;
+      }
+  
       if (file) {
         // Upload the file
-         handleFileUpload(file);
+        await handleFileUpload(file);
       }
-
-      const updatedFormData = { ...formData, avatar: formData.avatar || decoded?.photourl };
+  
+      const updatedFormData = { ...formData, avatar: formData.avatar || decodedval.photourl };
+  
       // Perform update logic here, using username, email, password state variables
       // Example: Update API call
       const response = await fetch(
-        `https://newrealestate.onrender.com/user/updateUser/${decoded.id}`,  
+        `https://newrealestate.onrender.com/user/updateUser/${decodedval.id}`,  
         {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",    
           },
-          body: JSON.stringify({ username, email, password, user, ...updatedFormData}),
+          body: JSON.stringify({ username, email, password, user, ...updatedFormData }),
         }
       );
-
+  
       if (!response.ok) {
         throw new Error("Failed to update user");
       }
-
+  
       const updatedUser = await response.json();
       console.log(updatedUser);
       // Handle successful update
@@ -125,6 +148,7 @@ const Profile: React.FC = () => {
       console.error("Error updating user:", error);
     }
   };
+  
    
   const handleDeleteUser = async () => {
     try {
@@ -251,7 +275,7 @@ const Profile: React.FC = () => {
           className="bg-blue-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80"
           onClick={handleUpdate}
         >
-          Update
+          Update Profile
         </button>
         <Link
           className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95"

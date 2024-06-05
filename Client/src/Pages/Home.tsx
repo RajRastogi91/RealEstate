@@ -17,7 +17,7 @@ const Home: React.FC = () => {
   }
 
 
-  useEffect(() => {
+  useEffect(() => {    
     const fetchProperties = async () => {
       try {
         const response = await fetch(
@@ -27,7 +27,6 @@ const Home: React.FC = () => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        console.log(data);
         setProperties(data || []);
       } catch (error) {
         console.error(error);
@@ -59,7 +58,7 @@ const Home: React.FC = () => {
   }, []);
 
   const rentProperties = properties.filter(property => property.rent === 1);
-  const saleProperties = properties.filter(property => property.sale === 1);
+  const saleProperties = properties.filter(property => property.sell === 1);
 
   return (
     <div>
@@ -86,7 +85,7 @@ const Home: React.FC = () => {
       <img
         src={img}
         alt="backgroundimg"
-        className="w-full h-[420px] object-cover"
+        className="w-full h-[420px] object-cover"      
       ></img>
 
 
@@ -98,9 +97,9 @@ const Home: React.FC = () => {
               <PropertyCard key={property.id} result={property} />
             ))
           ) : (
-            <p>No properties available for rent at the moment.</p>
+            <p>No properties available for rent at the moment.</p> 
           )}
-        </div>
+        </div>   
         <h2 className="text-2xl font-bold text-black mt-10">Properties for Sale</h2>
         <div className="flex flex-wrap gap-4">
           {saleProperties.length > 0 ? (

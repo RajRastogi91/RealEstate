@@ -69,7 +69,7 @@ export const createlist = (req, res) => {
           }
         }
       }
-    );
+    );  
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error creating property" });
@@ -77,7 +77,7 @@ export const createlist = (req, res) => {
 };
 
 // GET listings for rent and sell
-
+   
 export const getFilterListings = async (req, res) => {
   try {
     const results = await new Promise((resolve, reject) => {
@@ -90,11 +90,11 @@ export const getFilterListings = async (req, res) => {
         if (error) {
           console.error(error);
           reject("Error in fetching property data");
-        } else {
+        } else {    
           resolve(results);
         }
       });
-    });
+    });   
     res.status(200).json(results);
   } catch (error) {
     res.status(500).json({ error: error || "An unknown error occurred" });

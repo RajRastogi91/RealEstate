@@ -153,10 +153,10 @@ const Properties: React.FC = () => {
                 </div>
                 <div className="flex flex-col sm:flex-row gap-6 my-4">
                   <p className="text-slate-700 font-semibold">
-                    Furnished: {listing.furnished ? "Yes" : "No"}
+                    Furnished: {listing.furnished ? "Yes" : "No"}      
                   </p>
                   <p className="text-slate-700 font-semibold">
-                    Bedrooms: {listing.bedroom}
+                    Bedrooms: {listing.bedroom}   
                   </p>
                   <p className="text-slate-700 font-semibold">
                     Bathrooms: {listing.bathroom}

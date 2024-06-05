@@ -2,71 +2,96 @@ import db from '../Utils/Dbconnections.js';
 import bcrypt from 'bcrypt';
 
 // Update user profile route
+
 export const updateUser = (req, res, next) => {
   try {
-    const id=req.params.id;
+    const id = req.params.id;
     const userid = req.body.user;
-    console.log(id, userid)
+    console.log(id, userid);
+
     // Check if the authenticated user is trying to update their own account
-    if (req.body.user !== req.params.id){
-  
-    }
-    //   return next(errorHandler(401, 'You can only update your own account!'));
-
-
-    // Hash password if provided
-    if (req.body.password) {
-      req.body.password = bcrypt.hashSync(req.body.password, 10);
+    if (req.body.user !== req.params.id) {
+      return next(errorHandler(401, 'You can only update your own account!'));
     }
 
-    const { username, email, password, avatar } = req.body;
-
-    // Construct the SQL query
-    const sql = `
-      UPDATE users 
-      SET 
-        username = ?,
-        email = ?,
-        password = ?,
-        avatar = ?
-      WHERE 
-        userid = ?
+    // Fetch existing user details
+    const getUserSQL = `
+      SELECT * FROM users WHERE userid = ?
     `;
-
-    // Execute the SQL query
-    db.query(sql, [username, email, password, avatar, id], (error, results) => {
+    db.query(getUserSQL, [id], (error, existingUserData) => {
       if (error) {
         console.error(error);
         return next(error);
       }
 
-      // Check if any rows were affected
-      if (results.affectedRows === 0) {
-        return next(errorHandler(404, 'User not found'));
+      const existingUser = existingUserData[0];
+
+      // Validate fields
+      const username = req.body.username || existingUser.username;
+      const email = req.body.email || existingUser.email;
+      const password = req.body.password ? bcrypt.hashSync(req.body.password, 10) : existingUser.password;
+      const avatar = req.body.avatar || existingUser.avatar;
+
+      if (!req.body.username && !req.body.email && !req.body.password && !req.body.avatar) {
+        return next(errorHandler(400, 'Please update at least one field.'));
       }
 
-      // Fetch the updated user details
-      const getUserSQL = `
-        SELECT * FROM users WHERE userid = ?
+      if (existingUser.username && !req.body.username) {
+        return next(errorHandler(400, 'Username cannot be empty.'));
+      }
+      if (existingUser.email && !req.body.email) {
+        return next(errorHandler(400, 'Email cannot be empty.'));
+      }
+      if (!req.body.password) {
+        return next(errorHandler(400, 'Password cannot be empty.'));
+      }
+
+      // Construct the SQL query
+      const sql = `
+        UPDATE users 
+        SET 
+          username = ?,
+          email = ?,
+          password = ?,
+          avatar = ?
+        WHERE 
+          userid = ?
       `;
-      db.query(getUserSQL, [req.params.id], (error, updatedUserData) => {
+
+      // Execute the SQL query
+      db.query(sql, [username, email, password, avatar, id], (error, results) => {
         if (error) {
           console.error(error);
           return next(error);
         }
 
-        // Exclude password from the response
-        const { password, ...rest } = updatedUserData[0];
+        // Check if any rows were affected
+        if (results.affectedRows === 0) {
+          return next(errorHandler(404, 'User not found'));
+        }
 
-        // Send updated user details in the response
-        res.status(200).json(rest);
+        // Fetch the updated user details
+        db.query(getUserSQL, [req.params.id], (error, updatedUserData) => {
+          if (error) {
+            console.error(error);
+            return next(error);
+          }
+
+          // Exclude password from the response
+          const { password, ...rest } = updatedUserData[0];
+
+          // Send updated user details in the response
+          res.status(200).json(rest);
+        });
       });
     });
   } catch (error) {
     // Handle errors
-   console.log(error)
+    console.log(error);
   }
 };
+
+
 
 
 // delete User API 
