@@ -8,7 +8,7 @@ interface PropertyCardProps {
         propertyid: number;
         images: string[0];
         title: string;
-        description: string;
+        description: string;  
         price: number;
         location: string;
         furnished: boolean;
@@ -28,7 +28,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ result }) => {
         <div className="bg-white my-3 shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]">
             <Link to={`/property/${result.propertyid}`}>
                 
-                {result.images.length > 0 && (
+                {result.images.length > 0 && (    
                     <img
                         src={result.images} 
                         alt={`Property Image 1`}

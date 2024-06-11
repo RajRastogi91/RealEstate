@@ -32,7 +32,7 @@ app.options('*', cors());
 
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, 'dist')));
-
+   
 app.use('/auth', authRouter);
 app.use('/listing', listingRouter);
 app.use('/user', userRouter);

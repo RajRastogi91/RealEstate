@@ -98,8 +98,8 @@ const Properties: React.FC = () => {
     } catch (error) {
       console.error("Error:", error);
     } finally {
-      setLoading(false);
-    }
+      setLoading(false);  
+    }    
   };
 
   return (
@@ -129,7 +129,7 @@ const Properties: React.FC = () => {
           <div className="flex flex-col lg:flex-row justify-evenly items-center my-6">
             <div className="flex flex-col p-3 my-7 gap-4 w-full lg:w-[500px]">
               <h2 className="text-3xl text-slate-700 font-semibold">
-                {listing.title}
+                {listing.title}   
               </h2>
               <p className="text-2xl text-slate-700 font-semibold">
                 Price: ${listing.price}

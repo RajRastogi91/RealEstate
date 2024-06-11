@@ -14,7 +14,7 @@ const Home: React.FC = () => {
   let decoded: any;
   if (currentUser && currentUser.access_token) {
     decoded = jwtDecode(currentUser.access_token);
-  }
+  }     
 
 
   useEffect(() => {    

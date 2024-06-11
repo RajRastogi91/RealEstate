@@ -86,13 +86,6 @@ const Search : React.FC = () => {
                         className='w-5'/>
                         <span>Sell</span>
                     </div>
-                    <div className='flex gap-2'>
-                        <input 
-                        type="checkbox"
-                        id='offer'
-                        className='w-5'/>
-                        <span>Offer</span>
-                    </div>
                 </div>
                 <div className='flex gap-2 flex-wrap items-center'>
                     <label className='font-semibold'>Amenities:</label>
@@ -115,7 +108,7 @@ const Search : React.FC = () => {
                     <label className='font-semibold'>Location:</label>
                     <select id='location'
                     className='border rounded-lg p-3'
-                    value={searchLocation}
+                    value={searchLocation}   
                     onChange={(e)=>setSearchLocation(e.target.value)}>
                         <option value="">Select location</option>
                         <option value="Chandigarh">Chandigarh</option>
@@ -147,7 +140,7 @@ const Search : React.FC = () => {
                         
                     ))}
                     </>
-                )}
+                )}    
             </div>
         </div>
     </div>
