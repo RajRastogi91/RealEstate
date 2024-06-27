@@ -5,7 +5,7 @@ import { Outlet, Navigate } from 'react-router-dom';
 const PrivateRoute: React.FC = () => {
     const { currentUser } = useSelector((state: any) => state.user);
 
-    return (
+    return (  
         <div>
             {currentUser ? <Outlet /> : <Navigate to='/signin' />}
         </div>

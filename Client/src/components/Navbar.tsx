@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
     decoded = jwtDecode(currentUser.access_token);
 
   }
-
+   
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [searchError, setSearchError] = useState('');

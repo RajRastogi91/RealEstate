@@ -7,10 +7,10 @@ import db from '../Utils/Dbconnections.js';
 // Register user API
 
 export const signup = (req, res) => {
-    const { username, email, password, usertype } = req.body;  
+    const { username, email, password } = req.body;  
     const hashedPassword = bcrypt.hashSync(password, 10); // Hash the password
   
-    db.query('INSERT INTO users (username, email, password, usertype) VALUES (?, ?, ?, ?)', [username, email, hashedPassword, usertype], (error, results) => {
+    db.query('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', [username, email, hashedPassword], (error, results) => {
       if (error) {
         console.error(error);
         res.status(500).send('Error registering user');
@@ -37,7 +37,7 @@ export const signin = (req, res) => {
         
           const validPassword = await bcrypt.compare(password, user.password);
           if (validPassword) {
-            const token = jwt.sign({ id: user.userid, name: user.username, email: user.email, photourl : user.avatar, user :user.usertype }, process.env.JWT_SECRET, { expiresIn: '1h' });
+            const token = jwt.sign({ id: user.userid, name: user.username, email: user.email, photourl : user.avatar}, process.env.JWT_SECRET, { expiresIn: '1h' });
             res.cookie('access_token', token, { httpOnly: true });
             res.status(200).json({ message: 'Login success','access_token':token});
           } else {
@@ -67,7 +67,7 @@ export const google = async (req, res, next) => {
           if (results.length > 0) {
             // User exists, generate token and send response 
             const user = results[0];
-            const token = jwt.sign({ id: user.userid, name:user.username, email: user.email, photourl : user.avatar, user :user.usertype }, process.env.JWT_SECRET);
+            const token = jwt.sign({ id: user.userid, name:user.username, email: user.email, photourl : user.avatar }, process.env.JWT_SECRET);
             const { password, ...rest } = user;
             res.cookie('access_token', token, { httpOnly: true }).status(200).json({"access_token":token});
           } else {

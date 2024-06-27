@@ -27,7 +27,7 @@ export const createlist = (req, res) => {
         title,
         description,
         location,
-        sell,
+        sell,   
         rent,
         parking,
         furnished,
@@ -50,14 +50,14 @@ export const createlist = (req, res) => {
             ]);
             db.query(
               "INSERT INTO images (propertyid, imageurl) VALUES ?",
-              [imageValues],
-              (imageError, imageResults) => {
+              [imageValues],  
+              (imageError, imageResults) => {  
                 if (imageError) {
                   console.error(imageError);
-                  res
-                    .status(500)
+                  res   
+                    .status(500)       
                     .json({ message: "Error adding property images" });
-                } else {
+                } else {    
                   res
                     .status(201)
                     .json({ message: "Property created successfully", propertyid });
@@ -75,16 +75,16 @@ export const createlist = (req, res) => {
     res.status(500).json({ message: "Error creating property" });
   }
 };
-
+     
 // GET listings for rent and sell
    
 export const getFilterListings = async (req, res) => {
   try {
     const results = await new Promise((resolve, reject) => {
       db.query(`
-        SELECT p.*, GROUP_CONCAT(i.imageurl) AS images
+        SELECT p.*, GROUP_CONCAT(i.imageurl) AS images    
         FROM properties p
-        LEFT JOIN images i ON p.propertyid = i.propertyid
+        LEFT JOIN images i ON p.propertyid = i.propertyid   
         GROUP BY p.propertyid
       `, (error, results) => {
         if (error) {
@@ -102,7 +102,7 @@ export const getFilterListings = async (req, res) => {
 };
 
 
-
+   
 
 
 

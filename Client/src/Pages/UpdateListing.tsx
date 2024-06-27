@@ -29,6 +29,7 @@ const UpdateListing: React.FC = () => {
         userid:id,
     });
 
+    const [loading, setLoading] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
 // console.log(propertyDetails)
 
@@ -102,6 +103,7 @@ const UpdateListing: React.FC = () => {
             return;
         }
     
+        setLoading(true);
         try {
             const promises = selectedImages.map((image) => storeImage(image));
             const imageUrls = await Promise.all(promises);
@@ -131,6 +133,9 @@ const UpdateListing: React.FC = () => {
             console.log('Property updated successfully:', propertyData);
         } catch (error) {
             console.error('Error updating property:', error);
+        }
+        finally {
+            setLoading(false);
         }
     };
     
@@ -285,7 +290,7 @@ const UpdateListing: React.FC = () => {
                 The first image will be the cover (max 6)
                 </span>
             </p>
-            <div className='flex gap-4'>
+            <div className='flex gap-4'>    
                 <input 
                  onChange={handleImageChange}
                 className='p-3 border border-gray-300 rounded w-full' type="file" id='images' accept='image/*' multiple />
@@ -305,8 +310,9 @@ const UpdateListing: React.FC = () => {
 
               type='button'
               className='p-3 bg-blue-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
-              onClick={handleUpload} >
-                Update Listing
+              onClick={handleUpload}
+              disabled={loading} >
+               {loading ? 'Updating...' : 'Update Listing'}
             </button>
         </div>
     </form>

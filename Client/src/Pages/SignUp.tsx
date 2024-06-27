@@ -7,8 +7,7 @@ const SignUp: React.FC = () => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    password: '',
-    usertype: ''
+    password: ''
   });
   const [errors, setErrors] = useState({
     username: '',
@@ -115,11 +114,11 @@ const SignUp: React.FC = () => {
             onChange={handleChange}
           />
           {errors.password && <p className="text-red-500">{errors.password}</p>}
-          <select className='border p-3 rounded-lg' name='usertype' value={formData.usertype} onChange={handleChange}>
+          {/* <select className='border p-3 rounded-lg' name='usertype' value={formData.usertype} onChange={handleChange}>
             <option value='' disabled>Select an usertype option</option>
             <option value='Buyer'>Buyer</option>
             <option value='Seller'>Seller</option>
-          </select>
+          </select> */}
 
           <button type='submit' className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>
             Sign Up

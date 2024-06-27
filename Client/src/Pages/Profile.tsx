@@ -152,6 +152,10 @@ const Profile: React.FC = () => {
    
   const handleDeleteUser = async () => {
     try {
+
+      
+      const confirmation = window.confirm("Are you sure you want to delete your account? This action cannot be undone.");
+      if (!confirmation) return;
       const response = await fetch(
         `https://newrealestate.onrender.com/user/deleteUser/${decoded.id}`,
         {
@@ -165,7 +169,7 @@ const Profile: React.FC = () => {
 
       const data = await response.json();
 
-      // Dispatch success action if deletion was successful
+      // Dispatch success action if deletion was successful  
       dispatch(deleteUserSuccess(data));
 
       // You may also want to clear user data from the Redux store or redirect to a different page after deletion
@@ -215,10 +219,41 @@ const Profile: React.FC = () => {
   };
 
 
-  
+     
 
   return (
-    <div className="p-3 my-8 max-w-lg rounded-lg mx-auto shadow-gray-400 shadow-md">
+    <div className='flex flex-col md:flex-row'> 
+    <div className='p-7 border-b-2 md:border-r-2 md:min-h-screen'>
+      <p className="uppercase font-semibold text-center text-2xl">Others</p>
+    <div className="flex flex-col mt-5 gap-4">
+        <span
+          onClick={handleDeleteUser}
+          className="text-red-700 text-center cursor-pointer p-2 border hover:rounded-lg hover:bg-red-700 hover:text-white"
+        >   
+          Delete Account
+        </span>    
+        <Link to="/Orders" className='text-red-700 text-center border rounded-lg p-2 hover:bg-red-700 hover:text-white hover:border-transparent'>Orders</Link>
+    
+      </div>  
+  
+      <div className="flex flex-col gap-4 my-3">
+        <Link to='/Listings'>
+      <button
+        onClick={handleShowListings}
+        className="text-red-700 w-full border rounded-lg p-2 hover:bg-red-700 hover:text-white hover:border-transparent"
+      >    
+        Show Listings
+      </button>
+      </Link>
+ 
+        <span onClick={handleSignOut} className="text-red-700 text-center cursor-pointer p-2 border hover:rounded-lg hover:bg-red-700 hover:text-white">
+          Sign out
+        </span>
+      
+      </div>
+    </div>
+
+    <div className="p-3 my-8 w-1/3 max-w-full rounded-lg mx-auto shadow-gray-400 shadow-md">
       <h1 className="text-3xl font-semibold text-center my-7">PROFILE</h1>
       <form className="flex flex-col gap-4">
         <input                                                                                                             
@@ -284,35 +319,14 @@ const Profile: React.FC = () => {
           Create Listing    
         </Link>
       </form>
-      <div className="flex justify-between mt-5">
-        <span
-          onClick={handleDeleteUser}
-          className="text-red-700 cursor-pointer p-2 border hover:rounded-lg hover:bg-red-700 hover:text-white"
-        >
-          Delete Account
-        </span>    
-        <span onClick={handleSignOut} className="text-red-700 cursor-pointer p-2 border hover:rounded-lg hover:bg-red-700 hover:text-white">
-          Sign out
-        </span>
-      </div>
-  
-      <div className="flex justify-between my-3">
-        <Link to='/Listings'>
-      <button
-        onClick={handleShowListings}
-        className="text-green-700 border rounded-lg p-2 border-green-700 hover:bg-green-700 hover:text-white hover:border-transparent"
-      >
-        Show Listings
-      </button>
-      </Link>
-        <Link to="/Orders" className='text-green-700 border rounded-lg p-2 border-green-700 hover:bg-green-700 hover:text-white hover:border-transparent'>Orders</Link>
-        
-      </div>
+      
 
    
        
+    </div>
     </div>
   );    
 };
 
 export default Profile;
+

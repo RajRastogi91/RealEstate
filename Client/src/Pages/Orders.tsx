@@ -35,7 +35,7 @@ const Orders: React.FC = () => {
 
   return (
     <>
-        <div className='flex justify-center'>
+        <div className='flex justify-center'>  
         <h1 className='text-black font-bold text-2xl my-5'>Purchased Properties</h1>
         </div>
 

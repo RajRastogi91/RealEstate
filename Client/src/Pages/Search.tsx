@@ -19,7 +19,7 @@ const Search : React.FC = () => {
           if (!response.ok) {
             throw new Error('Failed to fetch data');
           }
-          const data = await response.json();
+          const data = await response.json();     
           setSearchResults(data);
           if (data.length === 0) {
             setSearchError('No properties found with the entered details.');
@@ -27,7 +27,7 @@ const Search : React.FC = () => {
             setSearchError('');
           }
           navigate(`/search?title=${searchTerm}&location=${searchLocation}`);
-        } catch (error) {
+        } catch (error) {     
           console.error('Error searching:', error);
           setSearchError('An error occurred while searching for properties.');
         }
@@ -110,7 +110,7 @@ const Search : React.FC = () => {
                     className='border rounded-lg p-3'
                     value={searchLocation}   
                     onChange={(e)=>setSearchLocation(e.target.value)}>
-                        <option value="">Select location</option>
+                        <option value="">Select location</option>   
                         <option value="Chandigarh">Chandigarh</option>
                         <option value="Delhi">Delhi</option>
                         <option value="Mohali">Mohali</option>

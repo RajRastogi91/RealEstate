@@ -26,11 +26,12 @@ const Properties: React.FC = () => {
   };
 
   const settings = {
-    dots: true,
-    infinite: true,
+    dots: listing?.images?.length > 1,
+    infinite: listing?.images?.length > 1,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+
   };
 
   useEffect(() => {
@@ -77,7 +78,7 @@ const Properties: React.FC = () => {
               {
                 name: listing.title,
                 price: listing.price,
-                quantity: 1,
+                quantity: 1,  
                 image: listing.images,
               },
             ],
@@ -115,10 +116,10 @@ const Properties: React.FC = () => {
             <Slider {...settings}>
               {listing.images.map((image: string, index: number) => (
                 <div key={index}>
-                  <img
+                  <img    
                     className="h-[350px] object-cover"
                     src={image}
-                    alt={`Property Image ${index + 1}`}
+                    alt={`Property Image ${index + 1}`}        
                     style={{ width: "100%", marginBottom: "10px" }}
                   />
                 </div>
@@ -132,7 +133,7 @@ const Properties: React.FC = () => {
                 {listing.title}   
               </h2>
               <p className="text-2xl text-slate-700 font-semibold">
-                Price: ${listing.price}
+                Price: ${listing.price}{listing.rent === 1 ? '/month' : ''}
               </p>
               <p>
                 <span className="text-slate-700 font-semibold">
@@ -158,7 +159,7 @@ const Properties: React.FC = () => {
                   <p className="text-slate-700 font-semibold">
                     Bedrooms: {listing.bedroom}   
                   </p>
-                  <p className="text-slate-700 font-semibold">
+                  <p className="text-slate-700 font-semibold">   
                     Bathrooms: {listing.bathroom}
                   </p>
                 </div>
@@ -166,7 +167,7 @@ const Properties: React.FC = () => {
                   <p className="bg-red-700 w-full max-w-[200px] text-white text-center p-1 rounded-md">
                     {listing.type === 0 ? "For Sale" : "For Rent"}
                   </p>
-                </div> */}
+                </div> */}    
               </div>
               <div className="flex justify-between mt-4">
                 <Link
@@ -174,7 +175,7 @@ const Properties: React.FC = () => {
                 >
                   <button className="bg-blue-700 text-white p-3 rounded-lg hover:opacity-95">
                     Contact Landlord
-                  </button>
+                  </button>      
                 </Link>
                 <button
                   className="bg-red-700 w-[100px] text-white p-3 rounded-lg hover:opacity-95"
@@ -192,7 +193,7 @@ const Properties: React.FC = () => {
         </div>
       )}
     </main>
-  );
+  );   
 };
 
 export default Properties;

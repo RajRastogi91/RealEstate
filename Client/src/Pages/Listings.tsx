@@ -7,7 +7,7 @@ const Listings: React.FC = () => {
   const location = useLocation();
   const { userListings } = location.state || { userListings: [] };
 
-  const handleListingDelete = async (id: any) => {
+  const handleListingDelete = async (id: any) => {   
     try {
       const res = await fetch(`https://newrealestate.onrender.com/listing/deletelisting/${id}`, {
         method: 'DELETE',
@@ -25,8 +25,8 @@ const Listings: React.FC = () => {
 
   return (
     <div className="m-3">
-      {userListings.length > 0 ? (
-        <div>
+      {userListings.length > 0 ? ( 
+        <div>       
           <h2 className="text-xl font-semibold mt-5">Your Listings</h2>
           <div className="flex flex-wrap mx-2">
             {userListings.map((listing: any, index: number) => (
@@ -43,7 +43,7 @@ const Listings: React.FC = () => {
                           Delete
                         </button>
                         <Link to={`/UpdateListing/${listing.propertyid}`}>
-                          <button className="text-green-700 uppercase">Edit</button>
+                          <button className="text-green-700 uppercase">Edit</button>    
                         </Link>
                       </div>
                     </div>
@@ -71,3 +71,4 @@ const Listings: React.FC = () => {
 };
 
 export default Listings;
+

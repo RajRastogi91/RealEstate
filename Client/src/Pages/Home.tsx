@@ -22,7 +22,7 @@ const Home: React.FC = () => {
       try {
         const response = await fetch(
           "https://newrealestate.onrender.com/listing/getFilterListings"
-        );
+        );    
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -38,7 +38,7 @@ const Home: React.FC = () => {
 
 
   useEffect(() => {
-    const options: Typed.Options = {
+    const options: Typed.Options = {    
       strings: ["Explore,", "Discover,"],
       typeSpeed: 100,
       backSpeed: 100,
@@ -55,12 +55,12 @@ const Home: React.FC = () => {
         typed.destroy();
       };
     }
-  }, []);
+  }, []);  
 
   const rentProperties = properties.filter(property => property.rent === 1);
   const saleProperties = properties.filter(property => property.sell === 1);
 
-  return (
+  return (    
     <div>
       <div className="flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto">
         <h1 className="text-black font-bold text-3xl max-w-4xl lg:text-6xl">
@@ -68,7 +68,7 @@ const Home: React.FC = () => {
           Today!
         </h1>
         <div className="sm:text-sm">
-          Explore our diverse range of properties, from cozy apartments in
+          Explore our diverse range of properties, from cozy apartments in   
           bustling city centers to serene countryside estates and everything in
           between. Whether you're searching for a starter home, an investment
           property, or your forever abode, we have something for everyone.
@@ -81,7 +81,7 @@ const Home: React.FC = () => {
         >
           Explore More...
         </Link>   
-      </div>
+      </div>   
       <img
         src={img}
         alt="backgroundimg"
@@ -90,7 +90,7 @@ const Home: React.FC = () => {
 
 
   <div className="max-w-6xl mx-auto p-3 flex items-center flex-col gap-8 my-10">
-        <h2 className="text-2xl font-bold text-black">Properties for Rent</h2>
+        <h2 className="text-2xl font-bold text-black underline">Properties for Rent</h2>
         <div className="flex flex-wrap gap-4">
           {rentProperties.length > 0 ? (
             rentProperties.map((property: any) => (
@@ -100,7 +100,7 @@ const Home: React.FC = () => {
             <p>No properties available for rent at the moment.</p> 
           )}
         </div>   
-        <h2 className="text-2xl font-bold text-black mt-10">Properties for Sale</h2>
+        <h2 className="text-2xl font-bold text-black mt-10 underline">Properties for Sale</h2>
         <div className="flex flex-wrap gap-4">
           {saleProperties.length > 0 ? (
             saleProperties.map((property: any) => (

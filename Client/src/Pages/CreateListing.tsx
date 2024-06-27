@@ -98,7 +98,7 @@ const CreateListing: React.FC = () => {
         const propertyData = {
             ...propertyDetails,
             images: imageUrls,
-        };
+        };     
 
         // Send property data to the server
        const response = await fetch('https://newrealestate.onrender.com/listing/createlist', {
@@ -157,7 +157,7 @@ const CreateListing: React.FC = () => {
     <h1 className='text-3xl font-semibold text-center my-7'> Create a Property List</h1>
     <form className='flex flex-col sm:flex-row gap-4'>
         <div className='flex flex-col gap-4 flex-1'>
-            <input 
+            <input       
             type="text"
             placeholder='Title' 
             className='border p-3 rounded-lg' 
@@ -189,14 +189,14 @@ const CreateListing: React.FC = () => {
             name="location" />
 
             <div className='flex gap-6 flex-wrap'>
-                <div className='flex gap-2'>
+                <div className='flex gap-2'>   
                     <input 
                     type="checkbox" 
                     id="Sell" 
                     className='w-5'
                     value={propertyDetails.sell ? 'true' : 'false'}
                     onChange={handleChange}
-                    name="sell" />
+                    name="sell" />   
                     <span>Sell</span>
                 </div>
                 <div className='flex gap-2'>
@@ -290,7 +290,7 @@ const CreateListing: React.FC = () => {
 
             <div className="flex gap-4 flex-wrap">
                         {selectedImages.map((image, index) => (
-                            <div key={index} className="relative">
+                            <div key={index} className="relative">    
                                 <img src={URL.createObjectURL(image)} alt={`Image ${index + 1}`} className="w-20 h-20 object-cover rounded" />
                                 <button className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center" onClick={() => handleDeleteImage(index)}>X</button>
                             </div>
@@ -299,11 +299,11 @@ const CreateListing: React.FC = () => {
 
             <button
 
-              type='button'
+              type='button'    
               className='p-3 bg-blue-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
               onClick={handleUpload}
               disabled={loading} >
-                {loading ? 'Creating...' : 'Create Listing'}
+                {loading ? 'Creating...' : 'Create Listing'}    
             </button>
         </div>
     </form>

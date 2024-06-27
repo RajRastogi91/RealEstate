@@ -49,12 +49,11 @@ export const createsession = async (req, res) => {
   }
 };
 
-
-
+   
   
 export const success = async (req, res) => {
     try {
-      
+         
       const { session_id, user_id, amount, property_id } = req.query;
       const session = await Stripe.checkout.sessions.retrieve(session_id);
       const paymentid = session.payment_intent;
