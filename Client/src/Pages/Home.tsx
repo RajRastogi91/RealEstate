@@ -97,7 +97,7 @@ const Home: React.FC = () => {
               <PropertyCard key={property.id} result={property} />
             ))
           ) : (
-            <p>No properties available for rent at the moment.</p> 
+            <p>No properties available for rent at the moment.</p>   
           )}
         </div>   
         <h2 className="text-2xl font-bold text-black mt-10 underline">Properties for Sale</h2>

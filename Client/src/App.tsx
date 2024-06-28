@@ -16,6 +16,7 @@ import Search from "./Pages/Search";
 import Success from "./Pages/Success";
 import Cancel from "./Pages/Cancel";
 import Orders from "./Pages/Orders";
+import Favorites from "./Pages/Favorites";
 
 const App: React.FC = () => {
 
@@ -39,6 +40,7 @@ const App: React.FC = () => {
           <Route path="/Success" element={<Success />} />
           <Route path="/Cancel" element={<Cancel />} />
           <Route path="/Orders" element={<Orders />} />
+          <Route path="/Favorites" element={<Favorites />} />
         </Routes>
       </HashRouter>
     </>

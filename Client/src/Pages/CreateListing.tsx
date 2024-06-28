@@ -24,7 +24,7 @@ const CreateListing: React.FC = () => {
         bathroom: 1,
         price: '',
         userid:id,
-    });
+    });   
 
     
     const [loading, setLoading] = useState(false);
@@ -92,11 +92,11 @@ const CreateListing: React.FC = () => {
             const promises = selectedImages.map((image) => storeImage(image));
             const imageUrls = await Promise.all(promises);
         //     console.log('Images uploaded:', imageUrls);
-        // } catch (error) {
+        // } catch (error) {   
         //     console.error('Error uploading images:', error);
         // }
         const propertyData = {
-            ...propertyDetails,
+            ...propertyDetails,      
             images: imageUrls,
         };     
 
@@ -145,7 +145,7 @@ const CreateListing: React.FC = () => {
             [name]: newValue,
         }));
     };
-
+   
 
   return (
    <main className='p-3 max-w-4xl mx-auto'>

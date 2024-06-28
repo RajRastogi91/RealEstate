@@ -233,6 +233,7 @@ const Profile: React.FC = () => {
           Delete Account
         </span>    
         <Link to="/Orders" className='text-red-700 text-center border rounded-lg p-2 hover:bg-red-700 hover:text-white hover:border-transparent'>Orders</Link>
+        <Link to="/Favorites" className='text-red-700 text-center border rounded-lg p-2 hover:bg-red-700 hover:text-white hover:border-transparent'>Favorites</Link>
     
       </div>  
   

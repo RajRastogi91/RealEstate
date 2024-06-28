@@ -6,6 +6,7 @@ import authRouter from './Routes/auth.route.js';
 import listingRouter from './Routes/listing.route.js';
 import userRouter from './Routes/user.route.js';
 import paymentRouter from './Routes/payment.route.js';
+import favoriteRouter from './Routes/favorite.route.js';
 
 const app = express();
 app.use(bodyParser.json());
@@ -37,6 +38,7 @@ app.use('/auth', authRouter);
 app.use('/listing', listingRouter);
 app.use('/user', userRouter);
 app.use('/payment', paymentRouter);
+app.use('/favorite', favoriteRouter);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
