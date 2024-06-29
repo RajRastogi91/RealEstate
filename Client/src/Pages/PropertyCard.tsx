@@ -27,12 +27,6 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ result }) => {
   const [message, setMessage] = useState<string | null>(null);
 
 
-//   const handleFavoriteClick = (event: React.MouseEvent) => {
-//     event.preventDefault();
-//     event.stopPropagation();
-//     setIsFavorited(!isFavorited);
-// };
-
   const handleFavoriteClick = async (event: React.MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();

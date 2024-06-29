@@ -70,3 +70,42 @@ export const addFavorite = async (req, res, next) => {
   
 
 
+// API route to fetch favorite properties
+export const getFavoriteProperties = async (req, res) => {
+  try {
+    const userid = req.params.id;
+
+    // Fetch favorite properties for the user
+    db.query(
+      `SELECT p.*, GROUP_CONCAT(i.imageurl) AS images 
+      FROM favorites AS f
+      JOIN properties AS p ON f.property_id = p.propertyid
+      LEFT JOIN images AS i ON p.propertyid = i.propertyid
+      WHERE f.user_id = ?   
+      GROUP BY p.propertyid
+      ORDER BY f.user_id`,
+      [userid],
+      async (error, results) => {
+        if (error) {
+          console.error('Error fetching favorite properties:', error);
+          return res.status(500).json({ error: 'Internal server error' });
+        } else {
+          console.log('Favorite properties fetched successfully');
+          const favoriteProperties = results.map(property => {
+            return {
+              ...property,
+              images: property.images.split(',') // Split images string into an array
+            };
+          });
+
+          // Sending response with fetched favorite properties
+          res.status(200).json(favoriteProperties);
+        }
+      }
+    );
+
+  } catch (error) {
+    console.error('Error fetching favorite properties:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+};

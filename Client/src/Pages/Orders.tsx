@@ -11,7 +11,7 @@ const Orders: React.FC = () => {
     if (currentUser && currentUser.access_token) {
       decoded = jwtDecode(currentUser.access_token);
     }     
-
+  
     useEffect(() => {
         const fetchData = async () => {   
             try {
@@ -30,16 +30,16 @@ const Orders: React.FC = () => {
         };
      
         fetchData();
-    }, [decoded.id]);
+    }, [decoded.id]);   
 
-
+   
   return (
     <>
         <div className='flex justify-center'>  
         <h1 className='text-black font-bold text-2xl my-5'>Purchased Properties</h1>
         </div>
 
-         <div className='w-full flex flex-wrap justify-center x-3 p-3 gap-3'>
+         <div className='w-full flex flex-wrap justify-center x-3 p-3 gap-3'>  
             {/* Display search results or error message */}   
             {searchResults.length > 0 ? (
                 searchResults.map((result: any) => (
