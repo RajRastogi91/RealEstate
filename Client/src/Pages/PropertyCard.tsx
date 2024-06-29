@@ -26,6 +26,13 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ result }) => {
   const [isFavorited, setIsFavorited] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
+
+//   const handleFavoriteClick = (event: React.MouseEvent) => {
+//     event.preventDefault();
+//     event.stopPropagation();
+//     setIsFavorited(!isFavorited);
+// };
+
   const handleFavoriteClick = async (event: React.MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
@@ -75,7 +82,7 @@ const handleCloseSnackbar = () => {
 
   return (
     <div className="bg-white my-3 shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]">
-      <Link to={`/property/${result.propertyid}`}>
+      <Link to={`/property/${result.propertyid}`}>  
         {result.images.length > 0 && (
           <div className="relative">
             <img
@@ -128,7 +135,7 @@ const handleCloseSnackbar = () => {
         {/* <p className="text-gray-700 px-2 my-2">{result.type === 0 ? 'For Sale' : 'For Rent'}</p> */}
       </Link>
 
-      {message && (
+       {message && (
                 <Snackbar open autoHideDuration={6000} onClose={handleCloseSnackbar}>
                     <Alert onClose={handleCloseSnackbar} severity="success">
                         {message}
