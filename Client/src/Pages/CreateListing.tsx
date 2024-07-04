@@ -10,7 +10,7 @@ const CreateListing: React.FC = () => {
     const userid = currentUser?.access_token;
     const decoded:any=jwtDecode(userid);
     const id=decoded.id;
-    // console.log(decoded)
+    console.log(decoded)
     const [selectedImages, setSelectedImages] = useState<File[]>([]);
     const [propertyDetails, setPropertyDetails] = useState({
         title: '',

@@ -27,7 +27,7 @@ const Profile: React.FC = () => {
   const fileRef = useRef(null) as React.MutableRefObject<any>;
   const currentUser = useSelector((state: any) => state.user.currentUser);
   const [file, setFile] = useState<File | null>(null);
-  const [filePerc, setFilePerc] = useState(0);
+  const [filePerc, setFilePerc] = useState(0);  
   const [fileUploadError, setfileUploadError] = useState(false);
   const [formData, setformData] = useState<FormData>({});
   const decodedval: any = jwtDecode(currentUser.access_token);

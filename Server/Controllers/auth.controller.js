@@ -37,7 +37,7 @@ export const signin = (req, res) => {
         
           const validPassword = await bcrypt.compare(password, user.password);
           if (validPassword) {
-            const token = jwt.sign({ id: user.userid, name: user.username, email: user.email, photourl : user.avatar}, process.env.JWT_SECRET, { expiresIn: '1h' });
+            const token = jwt.sign({ id: user.userid, name: user.username, email: user.email, photourl : user.avatar, usertype: user.usertype}, process.env.JWT_SECRET, { expiresIn: '1h' });
             res.cookie('access_token', token, { httpOnly: true });
             res.status(200).json({ message: 'Login success','access_token':token});
           } else {

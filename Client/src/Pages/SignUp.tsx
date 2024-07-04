@@ -66,7 +66,7 @@ const SignUp: React.FC = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(formData)
-      });
+      });   
       if (response.ok) {
         // Registration successful
         setSuccessMessage('Registration successful');
@@ -76,9 +76,9 @@ const SignUp: React.FC = () => {
         console.error('Registration failed');
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error:', error);  
     }
-  };
+  };   
 
   return (
     <>
@@ -98,7 +98,7 @@ const SignUp: React.FC = () => {
           {errors.username && <p className="text-red-500">{errors.username}</p>}
           <input
             type='email'
-            placeholder='Email'
+            placeholder='Email'   
             className='border p-3 rounded-lg'
             id='email'
             name='email'
