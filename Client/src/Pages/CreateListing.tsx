@@ -10,7 +10,14 @@ const CreateListing: React.FC = () => {
     const userid = currentUser?.access_token;
     const decoded:any=jwtDecode(userid);
     const id=decoded.id;
-    console.log(decoded)
+    const userType = decoded.usertype;
+    console.log(userType)
+
+    if (userType === 'Buyer') {
+        return <div>Access denied. Only sellers can create listings.</div>;
+      }
+    
+
     const [selectedImages, setSelectedImages] = useState<File[]>([]);
     const [propertyDetails, setPropertyDetails] = useState({
         title: '',
