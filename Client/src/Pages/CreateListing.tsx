@@ -141,6 +141,7 @@ const CreateListing: React.FC = () => {
         }
 
         setPropertyDetails((prevDetails) => ({
+            
             ...prevDetails,
             [name]: newValue,
         }));

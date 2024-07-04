@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/auth', authRouter);
 app.use('/listing', listingRouter);
 app.use('/user', userRouter);
-app.use('/payment', paymentRouter);
+app.use('/payment', paymentRouter);    
 app.use('/favorite', favoriteRouter);
 
 app.get('*', (req, res) => {

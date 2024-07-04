@@ -35,22 +35,22 @@ const Favorites: React.FC = () => {
 
 
   return (
-    <>
-      <div className="flex justify-center">
-        <h1 className="text-black font-bold text-2xl my-5">
-           Your Favorites
-        </h1>
-      </div>
-      <div className='w-full flex flex-wrap justify-center x-3 p-3 gap-3'>  
+    <>  
+      <div className="flex justify-center">   
+        <h1 className="text-black font-bold text-2xl my-5">   
+           Your Favorites 
+        </h1>      
+      </div>       
+      <div className='w-full flex flex-wrap justify-center p-3 x-3 gap-3'>    
             {/* Display search results or error message */}   
-            {searchResults.length > 0 ? (
+            {searchResults.length > 0 ? (        
                 searchResults.map((result: any) => (
-                    <PropertyCard key={result.id} result={result} />
+                    <PropertyCard key={result.propertyid} result={result} isFavorited={true}/>
                 ))
             ) : (
                 <h2 className='text-red-500 font-bold text-2xl my-5'>You haven't selected any property to Favorites!</h2>
-            )}
-         </div>
+            )} 
+         </div>   
     </>
   );
 };

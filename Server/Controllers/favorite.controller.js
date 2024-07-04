@@ -95,7 +95,7 @@ export const getFavoriteProperties = async (req, res) => {
             return {
               ...property,
               images: property.images.split(',') // Split images string into an array
-            };
+            };     
           });
 
           // Sending response with fetched favorite properties

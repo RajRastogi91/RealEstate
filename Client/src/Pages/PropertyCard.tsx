@@ -15,21 +15,22 @@ interface PropertyCardProps {
     location: string;
     furnished: boolean;
     bedroom: number;
-    bathroom: number;
+    bathroom: number;   
     parking: boolean;
     userid: number;
-  };
+  };  
+  isFavorited?: boolean;
 }
 
-const PropertyCard: React.FC<PropertyCardProps> = ({ result }) => {
+const PropertyCard: React.FC<PropertyCardProps> = ({ result, isFavorited: initialIsFavorited = false }) => {
 
-  const [isFavorited, setIsFavorited] = useState(false);
+  const [isFavorited, setIsFavorited] = useState(initialIsFavorited);
   const [message, setMessage] = useState<string | null>(null);
 
 
-  const handleFavoriteClick = async (event: React.MouseEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
+  const handleFavoriteClick = async (event: React.MouseEvent) => { 
+    event.preventDefault();  
+    event.stopPropagation();  
 
     try {
         if (isFavorited) {
@@ -42,7 +43,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ result }) => {
                 body: JSON.stringify({ userid: result.userid, propertyid: result.propertyid }),
             });
 
-            if (response.ok) {
+            if (response.ok) {     
                 setIsFavorited(false);
                 setMessage('Property removed from favorites');
             } else {
@@ -53,8 +54,8 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ result }) => {
             const response = await fetch('https://newrealestate.onrender.com/favorite/addFavorite', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                },
+                    'Content-Type': 'application/json',     
+                }, 
                 body: JSON.stringify({ userid: result.userid, propertyid: result.propertyid }),
             });
 
@@ -78,14 +79,14 @@ const handleCloseSnackbar = () => {
     <div className="bg-white my-3 shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]">
       <Link to={`/property/${result.propertyid}`}>  
         {result.images.length > 0 && (
-          <div className="relative">
+          <div className="relative">   
             <img
               src={result.images}
               alt={`Property Image 1`}
               className="h-[320px] sm:h-[220px] w-full object-cover hover:scale-105 transition-scale duration-300"
             />
             <div
-              onClick={handleFavoriteClick}
+              onClick={handleFavoriteClick}  
               className="absolute top-2 right-2 cursor-pointer"
             >
               {isFavorited ? (
@@ -108,7 +109,7 @@ const handleCloseSnackbar = () => {
         </p>
         <p className="text-gray-700 mb-2">
           <LocationOnIcon className="text-green-700" />
-          {result.location}
+          {result.location}  
         </p>
         <p className="text-gray-700 px-2 text-sm mb-2">{result.description}</p>
         <p className="text-gray-700 px-2 my-2 mb-2">
@@ -128,8 +129,8 @@ const handleCloseSnackbar = () => {
 
         {/* <p className="text-gray-700 px-2 my-2">{result.type === 0 ? 'For Sale' : 'For Rent'}</p> */}
       </Link>
-
-       {message && (
+   
+       {message && (    
                 <Snackbar open autoHideDuration={6000} onClose={handleCloseSnackbar}>
                     <Alert onClose={handleCloseSnackbar} severity="success">
                         {message}

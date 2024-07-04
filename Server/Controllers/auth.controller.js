@@ -7,10 +7,10 @@ import db from '../Utils/Dbconnections.js';
 // Register user API
 
 export const signup = (req, res) => {
-    const { username, email, password } = req.body;  
+    const { username, email, password, usertype } = req.body;  
     const hashedPassword = bcrypt.hashSync(password, 10); // Hash the password
   
-    db.query('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', [username, email, hashedPassword], (error, results) => {
+    db.query('INSERT INTO users (username, email, password, usertype) VALUES (?, ?, ?, ?)', [username, email, hashedPassword, usertype], (error, results) => {
       if (error) {
         console.error(error);
         res.status(500).send('Error registering user');
