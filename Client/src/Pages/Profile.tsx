@@ -234,7 +234,7 @@ const Profile: React.FC = () => {
             className="text-red-700 text-center cursor-pointer p-2 border hover:rounded-lg hover:bg-red-700 hover:text-white"
           >
             Delete Account
-          </span>
+          </span>   
           <Link
             to="/Orders"
             className="text-red-700 text-center border rounded-lg p-2 hover:bg-red-700 hover:text-white hover:border-transparent"
@@ -271,7 +271,7 @@ const Profile: React.FC = () => {
         <form className="flex flex-col gap-4">
           <input
             onChange={handleFileChange}
-            type="file"
+            type="file"  
             ref={fileRef}
             hidden
             accept="image/*"

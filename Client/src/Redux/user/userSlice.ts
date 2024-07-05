@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const userSlice = createSlice({
-  name: 'user',
+  name: 'user',   
   initialState,
   reducers: {   
     signInStart: (state) => {    
@@ -44,7 +44,7 @@ const userSlice = createSlice({
     },
     deleteUserFailure: (state, action) => {
       state.error = action.payload;
-      state.loading = false;
+      state.loading = false;  
     },
     signOutUserStart: (state) => {
       state.loading = true;

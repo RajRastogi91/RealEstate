@@ -39,33 +39,18 @@ const Navbar: React.FC = () => {
   if (currentUser && currentUser.access_token) {
     decoded = jwtDecode(currentUser.access_token);
 
-  }
+  }  
    
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-  const [searchError, setSearchError] = useState('');
+  // const [searchResults, setSearchResults] = useState([]);
+  // const [searchError, setSearchError] = useState('');
   const navigate = useNavigate();
 
-  const handleSearch = async (e: React.FormEvent) => {
+  const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      const response = await fetch(`https://newrealestate.onrender.com/listing/getListings/?title=${searchTerm}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch data');
-      }
-      const data = await response.json();
-      setSearchResults(data);
-      if (data.length === 0) {
-        setSearchError('No properties found with the entered title.'); 
-      } else {
-        setSearchError('');
-      }
-      navigate(`/search?title=${searchTerm}`);
-    } catch (error) {
-      console.error('Error searching:', error);
-      setSearchError('An error occurred while searching for properties.');
-    }
+    navigate(`/search?title=${searchTerm}`);
   };
+
 
 
 
@@ -154,6 +139,7 @@ const Navbar: React.FC = () => {
           </nav>
         </StyledToolbar>
       </AppBar>
+ 
 
     </div>
   );

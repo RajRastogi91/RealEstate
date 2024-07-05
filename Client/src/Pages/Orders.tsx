@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import PropertyCard from './PropertyCard';
 
 const Orders: React.FC = () => {
-    const [searchResults, setSearchResults] = useState([]);
+    const [searchResults, setSearchResults] = useState([]);  
     const currentUser = useSelector((state: any) => state.user.currentUser);
 
     let decoded: any;
@@ -32,7 +32,7 @@ const Orders: React.FC = () => {
         fetchData();
     }, [decoded.id]);   
 
-   
+    
   return (
     <>
         <div className='flex justify-center'>  
@@ -50,7 +50,7 @@ const Orders: React.FC = () => {
             )}
          </div>
     </>
-);    
+);      
 };  
 
 export default Orders

@@ -6,7 +6,7 @@ import db from '../Utils/Dbconnections.js';
 
 // Register user API
 
-export const signup = (req, res) => {
+export const signup = (req, res) => {  
     const { username, email, password, usertype } = req.body;  
     const hashedPassword = bcrypt.hashSync(password, 10); // Hash the password
   
@@ -31,7 +31,7 @@ export const signin = (req, res) => {
         console.error(error);
         res.status(500).json({ message: 'Error logging in' });
       } else {
-        if (results.length > 0) {
+        if (results.length > 0) {      
           
           const user = results[0];   
         
