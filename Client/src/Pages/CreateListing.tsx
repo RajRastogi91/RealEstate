@@ -11,10 +11,9 @@ const CreateListing: React.FC = () => {
     const decoded:any=jwtDecode(userid);
     const id=decoded.id;
     const userType = decoded.usertype;
-    console.log(userType)
 
     if (userType === 'Buyer') {
-        return <div>Access denied. Only sellers can create listings.</div>;
+        return <div className='text-2xl font-semibold flex justify-center items-center mt-20'>Access denied. Only sellers can create listings.</div>;
       }
     
 

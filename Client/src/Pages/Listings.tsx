@@ -1,8 +1,20 @@
 import React from 'react';
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { jwtDecode } from 'jwt-decode';
 
 const Listings: React.FC = () => {
+
+  const currentUser = useSelector((state : any) => state.user.currentUser);
+  const userid = currentUser?.access_token;
+  const decoded:any=jwtDecode(userid);
+  const userType = decoded.usertype;
+
+
+  if (userType === 'Buyer') {
+      return <div className='text-2xl font-semibold flex justify-center items-center mt-20'>Access denied for Buyers!</div>;
+    }
 
   const location = useLocation();
   const { userListings } = location.state || { userListings: [] };

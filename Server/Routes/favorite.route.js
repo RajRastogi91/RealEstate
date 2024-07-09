@@ -6,4 +6,4 @@ router.post('/addFavorite', addFavorite);
 router.delete('/removeFavorite', removeFavorite);
 router.get('/getFavoriteProperties/:id', getFavoriteProperties)
 
-export default router;
+export default router;  

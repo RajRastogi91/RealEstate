@@ -42,15 +42,13 @@ const Navbar: React.FC = () => {
   }  
    
   const [searchTerm, setSearchTerm] = useState('');
-  // const [searchResults, setSearchResults] = useState([]);
-  // const [searchError, setSearchError] = useState('');
   const navigate = useNavigate();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     navigate(`/search?title=${searchTerm}`);
   };
-
+    
 
 
 

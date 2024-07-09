@@ -44,6 +44,7 @@ const Profile: React.FC = () => {
   if (currentUser && currentUser.access_token) {
     decoded = jwtDecode(currentUser.access_token);
   }
+  console.log(decoded)
 
   const handleSignOut = async () => {
     try {
@@ -145,7 +146,7 @@ const Profile: React.FC = () => {
       if (!response.ok) {
         throw new Error("Failed to update user");
       }
-
+   
       const updatedUser = await response.json();
       console.log(updatedUser);
       // Handle successful update
@@ -247,7 +248,7 @@ const Profile: React.FC = () => {
           >
             Favorites
           </Link>
-        </div>
+        </div>   
         <div className="flex flex-col gap-4 my-3">
           <Link to="/Listings">
             <button
@@ -273,7 +274,7 @@ const Profile: React.FC = () => {
             onChange={handleFileChange}
             type="file"  
             ref={fileRef}
-            hidden
+            hidden       
             accept="image/*"
           />
           <img
@@ -331,8 +332,8 @@ const Profile: React.FC = () => {
             className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95"
             to={"/createlisting"}
           >
-            Create Listing
-          </Link>
+            Create Listing   
+          </Link>  
         </form>
       </div>
     </div>

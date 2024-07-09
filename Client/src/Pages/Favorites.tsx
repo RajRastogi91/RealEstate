@@ -13,6 +13,12 @@ const Favorites: React.FC = () => {
     decoded = jwtDecode(currentUser.access_token);
   }     
 
+  const userType = decoded.usertype;
+
+    if (userType === 'Seller') {
+        return <div className='text-2xl font-semibold flex justify-center items-center mt-20'>Access denied. Only Buyers can see favorites list.</div>;
+      }
+
   useEffect(() => {
     const fetchData = async () => {   
         try {
@@ -45,7 +51,7 @@ const Favorites: React.FC = () => {
             {/* Display search results or error message */}   
             {searchResults.length > 0 ? (        
                 searchResults.map((result: any) => (
-                    <PropertyCard key={result.propertyid} result={result} isFavorited={true}/>
+                    <PropertyCard key={result.propertyid} result={result} isFavorited={true}/>  
                 ))
             ) : (
                 <h2 className='text-red-500 font-bold text-2xl my-5'>You haven't selected any property to Favorites!</h2>

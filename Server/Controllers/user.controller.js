@@ -120,13 +120,13 @@ export const deleteUser = async (req, res, next) => {
       }
 
       // Check if any rows were affected
-      if (results.affectedRows === 0) {
+      if (results.affectedRows === 0) {   
         return next(errorHandler(404, 'User not found'));
       }
 
       // Clear any session data or tokens associated with the user
       // Example: Clearing access token from cookies
-      res.clearCookie('access_token');
+       res.clearCookie('access_token');
 
       // Send success response
       res.status(200).json('User has been deleted!');
