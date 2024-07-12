@@ -17,7 +17,7 @@ const Favorites: React.FC = () => {
 
     if (userType === 'Seller') {
         return <div className='text-2xl font-semibold flex justify-center items-center mt-20'>Access denied. Only Buyers can see favorites list.</div>;
-      }
+      }   
 
   useEffect(() => {
     const fetchData = async () => {   
@@ -33,7 +33,7 @@ const Favorites: React.FC = () => {
             setSearchResults(data);
         } catch (error) {
             console.error('Error fetching data:', error);   
-        }
+        }      
     };
  
     fetchData();

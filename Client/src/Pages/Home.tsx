@@ -80,8 +80,9 @@ const Home: React.FC = () => {
           className="text-blue-700 w-[150px] font-semibold border-2 rounded-lg p-2 border-blue-700 hover:bg-blue-700 hover:text-white hover:border-transparent"
         >
           Explore More...
-        </Link>   
+        </Link>         
       </div>   
+
       <img
         src={img}
         alt="backgroundimg"
@@ -90,7 +91,7 @@ const Home: React.FC = () => {
 
 
   <div className="max-w-6xl mx-auto p-3 flex items-center flex-col gap-8 my-10">
-        <h2 className="text-2xl font-bold text-black underline">Properties for Rent</h2>
+        <h2 className="text-2xl font-bold text-black uppercase underline">Properties for Rent</h2>
         <div className="flex flex-wrap gap-4">
           {rentProperties.length > 0 ? (
             rentProperties.map((property: any) => (
@@ -100,7 +101,7 @@ const Home: React.FC = () => {
             <p>No properties available for rent at the moment.</p>   
           )}
         </div>   
-        <h2 className="text-2xl font-bold text-black mt-10 underline">Properties for Sale</h2>
+        <h2 className="text-2xl font-bold text-black uppercase mt-10 underline">Properties for Sale</h2>
         <div className="flex flex-wrap gap-4">
           {saleProperties.length > 0 ? (
             saleProperties.map((property: any) => (
@@ -116,5 +117,4 @@ const Home: React.FC = () => {
 };
 
 export default Home;
-
 

@@ -285,12 +285,12 @@ const UpdateListing: React.FC = () => {
         </div>
             <div className='flex flex-col flex-1 gap-4'>
             <p className='font-semibold'>
-                Images:
+                Images:   
                 <span className='font-normal text-gray-600 ml-2'>
                 The first image will be the cover (max 6)
                 </span>
-            </p>
-            <div className='flex gap-4'>    
+            </p> 
+            <div className='flex gap-4'>       
                 <input 
                  onChange={handleImageChange}
                 className='p-3 border border-gray-300 rounded w-full' type="file" id='images' accept='image/*' multiple />
@@ -312,7 +312,7 @@ const UpdateListing: React.FC = () => {
               className='p-3 bg-blue-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
               onClick={handleUpload}
               disabled={loading} >
-               {loading ? 'Updating...' : 'Update Listing'}
+               {loading ? 'Updating...' : 'Update Listing'}  
             </button>
         </div>
     </form>

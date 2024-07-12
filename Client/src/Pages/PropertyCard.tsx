@@ -142,3 +142,4 @@ const handleCloseSnackbar = () => {
 };
 
 export default PropertyCard;
+

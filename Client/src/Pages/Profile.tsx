@@ -44,7 +44,6 @@ const Profile: React.FC = () => {
   if (currentUser && currentUser.access_token) {
     decoded = jwtDecode(currentUser.access_token);
   }
-  console.log(decoded)
 
   const handleSignOut = async () => {
     try {
@@ -156,7 +155,7 @@ const Profile: React.FC = () => {
     }
   };
 
-  const handleDeleteUser = async () => {
+  const handleDeleteUser = async () => {  
     try {
       const confirmation = window.confirm(
         "Are you sure you want to delete your account? This action cannot be undone."
@@ -194,7 +193,7 @@ const Profile: React.FC = () => {
     }
   };
 
-  useEffect(() => {
+  useEffect(() => {  
     if (file) {
       handleFileUpload(file);
     }
@@ -235,7 +234,7 @@ const Profile: React.FC = () => {
             className="text-red-700 text-center cursor-pointer p-2 border hover:rounded-lg hover:bg-red-700 hover:text-white"
           >
             Delete Account
-          </span>   
+          </span>     
           <Link
             to="/Orders"
             className="text-red-700 text-center border rounded-lg p-2 hover:bg-red-700 hover:text-white hover:border-transparent"

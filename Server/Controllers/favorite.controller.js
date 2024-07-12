@@ -10,7 +10,7 @@ export const addFavorite = async (req, res, next) => {
       }
   
       // Query to add the property to favorites
-      const result = await new Promise((resolve, reject) => {
+      const result = await new Promise((resolve, reject) => {  
         db.query(
           "INSERT INTO favorites (user_id, property_id) VALUES (?, ?)",
           [userid, propertyid],
